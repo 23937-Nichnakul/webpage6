@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SHIN // INTERESTS</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body class="interests-page" data-page="interests">
+<div class="noise"></div>
+<header class="nav-shell"><a class="brand" href="index.html"><span class="brand-mark">S</span><span>SHIN<span class="dim">_0304</span></span></a><nav><a class="nav-link" href="index.html">HOME</a><a class="nav-link" href="about.html">STUDENT</a><a class="nav-link active" href="interests.html">INTERESTS</a><a class="nav-link" href="contact.html">COMMS</a></nav><button class="system-btn" id="modeBtn">SYSTEM: ONLINE</button></header>
+
+<main>
+  <!-- เพิ่มกล่อง container ตรงนี้เพื่อบีบแนวเนื้อหาทั้งหมดให้ตรงกัน -->
+  <div class="container">
+    
+    <section class="page-hero">
+      <div class="section-label">INTERESTS / 02</div>
+      <h1 class="decrypt">INTERESTS <br><span>& CREATIONS</span></h1>
+      <p>SHIN’S LEISURE ACTIVITIES / CREATIVE INTENTIONS</p>
+    </section>
+
+    <section class="interest-module game-module reveal">
+      <div class="module-copy">
+        <div class="module-index">01 / PLAY</div>
+        <h2>เล่นเกม</h2>
+        <p>เกมคือทั้งความสนุกและพื้นที่ให้ได้สังเกตไอเดีย ระบบ และวิธีที่เกมทำให้ผู้เล่นอยากลองต่อ</p>
+        <div class="data-line"><span>ACTIVITY</span><b>PLAY / EXPLORE</b></div>
+        <div class="data-line"><span>MODE</span><b>ACTIVE</b></div>
+      </div>
+      <div class="module-visual game-visual" data-module="game">
+        <div class="radar"><span class="radar-sweep"></span><i class="radar-dot d1"></i><i class="radar-dot d2"></i><i class="radar-dot d3"></i><div class="radar-core"></div></div>
+        <div class="game-hud">TARGETS <b id="gameTargets">03</b></div>
+        <button class="game-target-dot" style="--x:71%;--y:30%" aria-label="target 1"></button>
+        <button class="game-target-dot" style="--x:28%;--y:69%" aria-label="target 2"></button>
+        <button class="game-target-dot" style="--x:82%;--y:75%" aria-label="target 3"></button>
+        <div class="module-label">PLAY FIELD // CLICK TARGETS</div>
+      </div>
+    </section>
+
+    <section class="interest-module draw-module reveal">
+      <div class="module-copy">
+        <div class="module-index">02 / DRAW</div>
+        <h2>วาดรูป</h2>
+        <p>ชอบวาดรูปและทดลองเปลี่ยนความคิดให้กลายเป็นเส้น รูปร่าง และภาพของตัวเอง</p>
+        <div class="data-line"><span>ACTIVITY</span><b>SKETCH / CREATE</b></div>
+        <div class="data-line"><span>INPUT</span><b>IMAGINATION</b></div>
+      </div>
+      <div class="module-visual draw-visual" data-module="draw">
+        <svg viewBox="0 0 520 320" role="img" aria-label="animated sketch">
+          <path class="sketch-path p1" d="M40 250 C80 80,170 80,220 230 S350 270,470 70"/>
+          <path class="sketch-path p2" d="M90 230 L150 110 L210 230 M120 190 L185 190"/>
+          <path class="sketch-path p3" d="M300 230 C300 160 390 140 420 200 C450 260 350 280 330 215"/>
+        </svg>
+        <div class="pencil-cursor"></div><div class="draw-grid"></div>
+        <div class="module-label">CANVAS // STROKE ACTIVE</div>
+      </div>
+    </section>
+
+    <section class="interest-module dev-module reveal">
+      <div class="module-copy">
+        <div class="module-index">03 / BUILD</div>
+        <h2>ทำเกม</h2>
+        <p>สนใจการทำเกมและการลองสร้างสิ่งที่ตัวเองคิด ตั้งแต่ไอเดีย ระบบ ไปจนถึงการทดลองให้มันทำงาน</p>
+        <div class="data-line"><span>ACTIVITY</span><b>BUILD / TEST</b></div>
+        <div class="data-line"><span>STATUS</span><b>ITERATING</b></div>
+      </div>
+      <div class="module-visual dev-visual" data-module="dev">
+        <div class="code-rain" aria-hidden="true"></div>
+        <div class="dev-window">
+          <div class="dev-head"><span>GAME_CORE.js</span><i></i><i></i><i></i></div>
+          <pre><span>01</span> player.move(input);<br><span>02</span> world.update(delta);<br><span>03</span> if(target.hit) score++;<br><span>04</span> build(); test(); repeat();</pre>
+          <div class="compile">BUILD <b id="buildPct">87%</b><i><em></em></i></div>
+        </div>
+        <div class="pixel-orbit"><i></i><i></i><i></i><i></i></div>
+        <div class="module-label">DEV LAB // BUILD PIPELINE</div>
+      </div>
+    </section>
+    
+  </div> <!-- ปิดกล่อง container ตรงนี้ -->
+</main>
+
+<footer class="site-footer"><span>SHIN / Nichnaku Klomsae</span><span>CHOMTHONG / CHIANG MAI / THAILAND</span></footer>
+<script src="assets/app.js"></script>
+<script>
+(function(){
+ const targets=[...document.querySelectorAll('.game-target-dot')], out=document.getElementById('gameTargets');
+ targets.forEach(t=>t.addEventListener('click',()=>{t.classList.add('hit');let n=document.querySelectorAll('.game-target-dot:not(.hit)').length;out.textContent=String(n).padStart(2,'0');}));
+ const build=document.getElementById('buildPct'); if(build){let n=87;setInterval(()=>{n=n>=99?76:n+1;build.textContent=n+'%'},700)}
+})();
+</script>
+</body></html>
